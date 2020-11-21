@@ -1,5 +1,6 @@
 package App;
 
+import App.models.User;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.event.ActionEvent;
@@ -13,6 +14,8 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Optional;
 
 public class Login {
 
@@ -42,15 +45,22 @@ public class Login {
     public void login (ActionEvent actionEvent) throws IOException {
         this.login = usernameLogin.getText();
         this.password = passwordLogin.getText();
-        if(password.equals("password")&&login.equals("login")) {
+        System.out.println(login + " " + password);
+        Optional<User> user = Optional.empty();
+        try {
+            user = Connector.getInstance().login(login, password);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            communicates.setText("niepoprawne dane logowania");
+        }
+        if(user.isPresent()) {
             Parent root = FXMLLoader.load(getClass().getResource("userAccount.fxml"));
             Scene Scene = new Scene(root);
             Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             window.setScene(Scene);
             window.show();
         }
-        else
-        {
+        else {
             communicates.setText("niepoprawne dane logowania");
         }
     }
