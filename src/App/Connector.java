@@ -155,4 +155,8 @@ public class Connector {
                 "WHERE id = " + id);
     }
 
+    public void disconnect() throws SQLException {
+        statement.close();
+    }
+
 }
