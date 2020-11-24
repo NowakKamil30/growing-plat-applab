@@ -53,7 +53,7 @@ public class Connector {
     }
 
     public Optional<User> login(String login, String password) throws SQLException {
-        ResultSet result = statement.executeQuery("SELECT * FROM Users WHERE login = " + login + " AND password = " + password);
+        ResultSet result = statement.executeQuery("SELECT * FROM Users WHERE login = " + "'" + login + "'" + " AND password = " + "'"+password+"'");
         if(result.next()) {
             if (result.getBoolean("isActive")) {
                 return Optional.of(new User(
@@ -109,7 +109,7 @@ public class Connector {
     }
 
     public Optional<User> getUserByLogin(String login) throws SQLException {
-        ResultSet result = statement.executeQuery("SELECT * from Users WHERE login=" + login);
+        ResultSet result = statement.executeQuery("SELECT * from `Users` WHERE `login`='" + login + "'");
         if (result.next()) {
             return Optional.of(new User(
                     result.getLong("id"),
