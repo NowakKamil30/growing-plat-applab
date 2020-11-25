@@ -11,14 +11,17 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-//        Connector.getInstance().addUser(
-//                new User(null, "login", "email", "password", "kamil", "nowak", Role.USER, true)
-//        );
+        /*
+        Connector.getInstance().addUser(
+                new User(null, "login", "email", "password", "kamil", "nowak", Role.USER, true)
+        );
+        */
         Parent root;
         root = FXMLLoader.load(getClass().getResource("chooseYourAdventure.fxml"));
         primaryStage.setTitle("Plant App");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
+
     }
 
 
