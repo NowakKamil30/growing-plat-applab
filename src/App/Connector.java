@@ -69,7 +69,7 @@ public class Connector {
                 return Optional.empty();
             }
         } else {
-            return null;
+            return Optional.empty();
         }
     }
 
