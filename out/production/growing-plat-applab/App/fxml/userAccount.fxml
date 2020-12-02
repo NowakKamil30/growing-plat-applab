@@ -3,21 +3,21 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="335.0" prefWidth="246.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.UserAccount">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPressed" prefHeight="335.0" prefWidth="280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.UserAccount">
    <children>
-      <Button layoutX="98.0" layoutY="269.0" mnemonicParsing="false" onAction="#changeSceneToChooseYourAdventure" text="Wyloguj" />
+      <Button fx:id="logout" layoutX="98.0" layoutY="269.0" mnemonicParsing="false" onAction="#changeSceneToChooseYourAdventure" text="Wyloguj" />
       <Button layoutX="73.0" layoutY="155.0" mnemonicParsing="false" text="Moje urządzenia" />
       <Button layoutX="86.0" layoutY="199.0" mnemonicParsing="false" text="Moje konto" />
-      <MenuBar fx:id="myMenuBar4" layoutY="2.0" prefHeight="25.0" prefWidth="246.0">
+      <MenuBar fx:id="myMenuBar4" layoutY="2.0" prefHeight="25.0" prefWidth="280.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#ewakuacja" text="Close" />
+              <MenuItem mnemonicParsing="false" onAction="#ewakuacja" text="Close  Ctrl+F4" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem fx:id="myMenu" mnemonicParsing="false" onAction="#changeSceneToAboutUs" text="About" />
+              <MenuItem fx:id="aboutUs" mnemonicParsing="false" onAction="#changeSceneToAboutUs" text="About" />
             </items>
           </Menu>
         </menus>

@@ -59,7 +59,7 @@ public class Login {
             System.out.println("wychodzę z użyciem ALT+F4");
             Platform.exit();
         }
-        if (keyEvent.isControlDown() && keyEvent.getCode() == KeyCode.A) {
+        if ((keyEvent.isAltDown()||keyEvent.isControlDown()) && keyEvent.getCode() == KeyCode.A) {
             System.out.println("przyjmuje pozycje bojowa");
             aboutUs.fire();
         }

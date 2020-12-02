@@ -3,9 +3,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="371.0" prefWidth="312.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.Register">
+<AnchorPane onKeyPressed="#handleKeyPressed" prefHeight="371.0" prefWidth="312.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.Register">
    <children>
-      <Button layoutX="146.0" layoutY="305.0" mnemonicParsing="false" onAction="#registerAccount" text="Zarejestruj" />
+      <Button fx:id="register" layoutX="146.0" layoutY="305.0" mnemonicParsing="false" onAction="#registerAccount" text="Zarejestruj" />
       <Button layoutX="61.0" layoutY="305.0" mnemonicParsing="false" onAction="#changeSceneToChooseYourAdventure" text="Wyjdź" />
       <Label layoutX="125.0" layoutY="53.0" text="Rejestracja" />
       <GridPane hgap="10.0" layoutX="31.0" layoutY="98.0">
@@ -40,12 +40,12 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#ewakuacja" text="Close" />
+              <MenuItem mnemonicParsing="false" onAction="#ewakuacja" text="Close  Ctrl+F4" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem fx:id="menuAbout" mnemonicParsing="false" onAction="#changeSceneToAboutUs" text="About" />
+              <MenuItem fx:id="aboutUs" mnemonicParsing="false" onAction="#changeSceneToAboutUs" text="About  Ctrl+A" />
             </items>
           </Menu>
         </menus>

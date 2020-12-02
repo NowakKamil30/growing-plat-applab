@@ -8,10 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -34,13 +33,10 @@ public class Register {
     PasswordField registerRepeatPassword;
     @FXML
     Label registerCommLabel;
-
-    private String name;
-    private String surname;
-    private String email;
-    private String login;
-    private String password;
-    private String repeatPassword;
+    @FXML
+    MenuItem aboutUs;
+    @FXML
+    Button register;
 
     public void ewakuacja(ActionEvent actionEvent) {
         Platform.exit();
@@ -74,12 +70,12 @@ public class Register {
 
     public void registerAccount(ActionEvent actionEvent) throws IOException {
 
-        this.password = registerPassword.getText();
-        this.repeatPassword = registerRepeatPassword.getText();
-        this.login = registerLogin.getText();
-        this.email = registerEmail.getText();
-        this.name = registerName.getText();
-        this.surname = registerSurname.getText();
+        String password = registerPassword.getText();
+        String repeatPassword = registerRepeatPassword.getText();
+        String login = registerLogin.getText();
+        String email = registerEmail.getText();
+        String name = registerName.getText();
+        String surname = registerSurname.getText();
         try {
             if (Connector.getInstance().getUserByLogin(login).isEmpty() && !login.isEmpty()) {
                 if (password.equals(repeatPassword) && !password.isEmpty()) {
@@ -98,6 +94,23 @@ public class Register {
         } catch (SQLException e) {
             registerCommLabel.setText("Wystąpił błąd");
             e.printStackTrace();
+        }
+    }
+    @FXML
+    private void handleKeyPressed(KeyEvent keyEvent)
+    {
+        if(keyEvent.getCode() == KeyCode.ENTER)
+        {
+            register.fire();
+        }
+        if(keyEvent.isControlDown() && keyEvent.getCode() == KeyCode.F4)
+        {
+            System.out.println("wychodzę z użyciem ALT+F4");
+            Platform.exit();
+        }
+        if ((keyEvent.isAltDown()||keyEvent.isControlDown()) && keyEvent.getCode() == KeyCode.A) {
+            System.out.println("przyjmuje pozycje bojowa");
+            aboutUs.fire();
         }
     }
 }

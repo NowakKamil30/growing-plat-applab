@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane onKeyPressed="#handleKeyPressed" prefHeight="182.0" prefWidth="261.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.Login">
+<AnchorPane onKeyPressed="#handleKeyPressed" prefHeight="182.0" prefWidth="255.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.Login">
    <children>
       <GridPane layoutX="31.0" layoutY="54.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
         <columnConstraints>
@@ -27,20 +27,30 @@
             <Button mnemonicParsing="false" onAction="#changeSceneToChooseYourAdventure" text="Wróć" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <MenuBar fx:id="myMenuBar2" layoutY="2.0" prefHeight="25.0" prefWidth="261.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" onAction="#ewakuacja" text="Close  Alt+F4"/>
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem fx:id="aboutUs" mnemonicParsing="false" onAction="#changeSceneToAboutUs" text="About  Ctrl+A" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
       <Label fx:id="communicates" layoutX="99.0" layoutY="151.0" />
+      <GridPane layoutY="-1.0" prefHeight="30.0" prefWidth="261.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <MenuBar fx:id="myMenuBar2">
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#ewakuacja" text="Close  Alt+F4" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem fx:id="aboutUs" mnemonicParsing="false" onAction="#changeSceneToAboutUs" text="About  Ctrl+A" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>

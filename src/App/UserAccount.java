@@ -7,8 +7,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuBar;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -24,6 +25,10 @@ public class UserAccount {
     Label userAccountEmail;
     @FXML
     Label workName;
+    @FXML
+    MenuItem aboutUs;
+    @FXML
+    Button logout;
 
     public static String login = Login.login;
     public static String firstName = Login.firstName;
@@ -57,5 +62,23 @@ public class UserAccount {
     }
     public void ewakuacja(ActionEvent actionEvent) {
         Platform.exit();
+    }
+
+    @FXML
+    private void handleKeyPressed(KeyEvent keyEvent)
+    {
+        if(keyEvent.isControlDown()&&keyEvent.getCode() == KeyCode.L)
+        {
+            logout.fire();
+        }
+        if(keyEvent.isControlDown() && keyEvent.getCode() == KeyCode.F4)
+        {
+            System.out.println("wychodzę z użyciem ALT+F4");
+            Platform.exit();
+        }
+        if ((keyEvent.isAltDown()||keyEvent.isControlDown()) && keyEvent.getCode() == KeyCode.A) {
+            System.out.println("przyjmuje pozycje bojowa");
+            aboutUs.fire();
+        }
     }
 }
