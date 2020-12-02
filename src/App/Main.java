@@ -9,6 +9,8 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
+    private User user;
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         /*
@@ -17,10 +19,12 @@ public class Main extends Application {
         );
         */
         Parent root;
-        root = FXMLLoader.load(getClass().getResource("chooseYourAdventure.fxml"));
+        root = FXMLLoader.load(getClass().getResource("fxml/chooseYourAdventure.fxml"));
         primaryStage.setTitle("Plant App");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
+        //user = Connector.getInstance().getUserByLogin("login").get();
+        //System.out.println(user.firstName());
 
     }
 
@@ -28,4 +32,5 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
 }

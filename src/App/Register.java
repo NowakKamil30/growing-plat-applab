@@ -13,12 +13,9 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Optional;
 
 public class Register {
     @FXML
@@ -48,20 +45,31 @@ public class Register {
     public void ewakuacja(ActionEvent actionEvent) {
         Platform.exit();
     }
+
     public void changeSceneToChooseYourAdventure(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("chooseYourAdventure.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/chooseYourAdventure.fxml"));
         Scene Scene = new Scene(root);
-        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         window.setScene(Scene);
         window.show();
 
     }
+
     public void changeSceneToAboutUs(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("aboutUs.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/aboutUs.fxml"));
         Scene Scene = new Scene(root);
         Stage window = (Stage) myMenuBar.getScene().getWindow();
         window.setScene(Scene);
         window.show();
+    }
+
+    public void changeSceneToLogin(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/login.fxml"));
+        Scene Scene = new Scene(root);
+        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        window.setScene(Scene);
+        window.show();
+
     }
 
     public void registerAccount(ActionEvent actionEvent) throws IOException {
@@ -72,27 +80,25 @@ public class Register {
         this.email = registerEmail.getText();
         this.name = registerName.getText();
         this.surname = registerSurname.getText();
-        Optional<User> user = Optional.empty();
-            try {
-                if (Connector.getInstance().getUserByLogin(login).isEmpty())
-                    if (password.equals(repeatPassword)) {
-                        Connector.getInstance().addUser(
-                                new User(null, login, email, password, name, surname, Role.USER, true)
-                        );
-                        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-                        Scene Scene = new Scene(root);
-                        Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                        window.setScene(Scene);
-                        window.show();
-                    } else {
-                        registerCommLabel.setText("cos poszlo nie tak");
-                    }
+        try {
+            if (Connector.getInstance().getUserByLogin(login).isEmpty() && !login.isEmpty()) {
+                if (password.equals(repeatPassword) && !password.isEmpty()) {
+                    Connector.getInstance().addUser(
+                            new User(null, login, email, password, name, surname, Role.USER, true)
+                    );
+
+                    changeSceneToLogin(actionEvent);
+
+                } else {
+                    registerCommLabel.setText("cos poszlo nie tak");
+                }
+            } else {
+                registerCommLabel.setText("Wystąpił błąd");
             }
-            catch(SQLException e){
+        } catch (SQLException e) {
             registerCommLabel.setText("Wystąpił błąd");
             e.printStackTrace();
         }
     }
-
-    }
+}
 

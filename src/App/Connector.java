@@ -69,13 +69,14 @@ public class Connector {
                 return Optional.empty();
             }
         } else {
-            return null;
+            return Optional.empty();
         }
     }
 
     public void addUser(User user) throws SQLException {
         statement.execute(String.format("INSERT INTO Users (email, login, password, first_name, last_name, role, isActive) " +
-                "VALUES ('%s', '%s', '%s', '%s', '%s', '%s', %b)", user.email(),
+                "VALUES ('%s', '%s', '%s', '%s', '%s', '%s', %b)",
+                user.email(),
                 user.login(),
                 user.password(),
                 user.firstName(),
@@ -89,7 +90,7 @@ public class Connector {
     }
 
     public void deleteUserByLogin(String login) throws SQLException {
-        statement.execute("DELETE FROM Users WHERE login=" + login);
+        statement.execute("DELETE FROM Users WHERE login=" + "'" + login + "'");
     }
 
     public Optional<User> getUserById(Long id) throws SQLException {
@@ -109,7 +110,7 @@ public class Connector {
     }
 
     public Optional<User> getUserByLogin(String login) throws SQLException {
-        ResultSet result = statement.executeQuery("SELECT * from `Users` WHERE `login`='" + login + "'");
+        ResultSet result = statement.executeQuery("SELECT * from `Users` WHERE `login`=" + "'" + login + "'");
         if (result.next()) {
             return Optional.of(new User(
                     result.getLong("id"),

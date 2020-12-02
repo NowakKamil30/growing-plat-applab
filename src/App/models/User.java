@@ -11,5 +11,6 @@ public record User(
         String lastName,
         Role role,
         boolean isActive
-) {
+){
+
 }

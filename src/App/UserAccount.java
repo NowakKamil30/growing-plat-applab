@@ -14,9 +14,6 @@ import java.io.IOException;
 
 public class UserAccount {
 
-    private String name = "noname";
-    private String surname = "nosurname";
-    private String email = "nomail";
     private String something = "something will be here";
 
     @FXML
@@ -28,17 +25,22 @@ public class UserAccount {
     @FXML
     Label workName;
 
+    public static String login = Login.login;
+    public static String firstName = Login.firstName;
+    public static String lastName = Login.lastName;
+    public static String email = Login.email;
+
 
 
     public void initialize()
     {
-        this.userAccountName.setText(name+" "+surname);
+        this.userAccountName.setText(firstName+" "+lastName);
         this.userAccountEmail.setText(email);
         this.workName.setText(something);
     }
 
     public void changeSceneToAboutUs(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("aboutUs.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/aboutUs.fxml"));
         Scene Scene = new Scene(root);
         Stage window = (Stage) myMenuBar4.getScene().getWindow();
         window.setScene(Scene);
@@ -46,7 +48,7 @@ public class UserAccount {
 
     }
     public void changeSceneToChooseYourAdventure(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("chooseYourAdventure.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/chooseYourAdventure.fxml"));
         Scene Scene = new Scene(root);
         Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         window.setScene(Scene);

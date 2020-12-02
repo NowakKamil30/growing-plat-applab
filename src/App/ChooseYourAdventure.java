@@ -20,7 +20,7 @@ public class ChooseYourAdventure {
     }
 
     public void changeSceneToLogin(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/login.fxml"));
         Scene Scene = new Scene(root);
         Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         window.setScene(Scene);
@@ -28,7 +28,7 @@ public class ChooseYourAdventure {
 
     }
     public void changeSceneToRegister(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("register.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/register.fxml"));
         Scene Scene = new Scene(root);
         Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         window.setScene(Scene);
@@ -36,7 +36,7 @@ public class ChooseYourAdventure {
 
     }
     public void changeSceneToAboutUs(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("aboutUs.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/aboutUs.fxml"));
         Scene Scene = new Scene(root);
         Stage window = (Stage) myMenuBar3.getScene().getWindow();
         window.setScene(Scene);

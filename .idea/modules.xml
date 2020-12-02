@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/growing-plat-applab.iml" filepath="$PROJECT_DIR$/growing-plat-applab.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../../jdk/javafx-sdk-11.0.2/javafx-sdk-11.0.2.iml" filepath="$PROJECT_DIR$/../../../../jdk/javafx-sdk-11.0.2/javafx-sdk-11.0.2.iml" />
     </modules>
   </component>
 </project>

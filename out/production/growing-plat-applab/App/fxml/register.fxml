@@ -30,10 +30,10 @@
             <Label text="Nazwisko" GridPane.rowIndex="5" />
             <TextField fx:id="registerLogin" GridPane.columnIndex="1" />
             <TextField fx:id="registerEmail" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="registerName" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField fx:id="registerSurname" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <PasswordField fx:id="registerPassword" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <PasswordField fx:id="registerRepeatPassword" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="registerName" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="registerSurname" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
       <MenuBar fx:id="myMenuBar" layoutX="-5.0" layoutY="2.0" prefHeight="25.0" prefWidth="317.0">
