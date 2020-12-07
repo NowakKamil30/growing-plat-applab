@@ -144,6 +144,25 @@ public class Connector {
         return userList;
     }
 
+    public List<User> filterByFirstLetter(String letter) throws SQLException {
+        ResultSet result = statement.executeQuery("SELECT * from Users WHERE first_name LIKE '" + letter + "%'");
+        List<User> userList = new LinkedList<>();
+        while (result.next()) {
+            userList.add(
+                    new User(
+                            result.getLong("id"),
+                            result.getString("login"),
+                            result.getString("email"),
+                            result.getString("password"),
+                            result.getString("first_name"),
+                            result.getString("last_name"),
+                            Role.valueOf(result.getString("role")),
+                            result.getBoolean("isActive"))
+            );
+        }
+        return userList;
+    }
+
     public void updateUser(Long id, User user) throws SQLException {
         statement.execute("UPDATE Users SET" +
                 " email = " + user.email() +
