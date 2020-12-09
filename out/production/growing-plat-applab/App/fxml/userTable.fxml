@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane onKeyPressed="#handleKeyPressed" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.UserTable">
+   <children>
+      <TableView fx:id="tableView" layoutX="1.0" layoutY="122.0" prefHeight="278.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="122.0">
+        <columns>
+          <TableColumn fx:id="firstNameColumn" prefWidth="75.0" text="Imie" />
+          <TableColumn fx:id="lastNameColumn" prefWidth="75.0" text="Nazwisko" />
+            <TableColumn fx:id="loginColumn" prefWidth="75.0" text="Login" />
+            <TableColumn fx:id="genderColumn" prefWidth="75.0" text="Płeć" />
+            <TableColumn fx:id="isActiveColumn" prefWidth="97.0" text="Czy Aktywny?" />
+            <TableColumn fx:id="roleColumn" prefWidth="75.0" text="Rola" />
+            <TableColumn fx:id="action" prefWidth="75.0" />
+        </columns>
+      </TableView>
+      <TextField fx:id="filterField" layoutX="105.0" layoutY="67.0" prefHeight="25.0" prefWidth="277.0" />
+      <Label layoutX="61.0" layoutY="71.0" prefHeight="17.0" prefWidth="44.0" text="Szukaj" />
+      <MenuBar fx:id="myMenuBar4" layoutY="2.0" prefHeight="25.0" prefWidth="600.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="logout" mnemonicParsing="false" onAction="#changeSceneToChooseYourAdventure" text="Wyloguj" />
+                <MenuItem fx:id="back" mnemonicParsing="false" onAction="#changeSceneToAdminAccount" text="Wróć" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem fx:id="aboutUs" mnemonicParsing="false" onAction="#changeSceneToAboutUs" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Button mnemonicParsing="false" text="Button" />
+      <Button fx:id="button" layoutX="461.0" layoutY="67.0" mnemonicParsing="false" onAction="#refreshTable" text="Button" />
+   </children>
+</AnchorPane>

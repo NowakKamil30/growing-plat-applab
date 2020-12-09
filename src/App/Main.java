@@ -25,6 +25,7 @@ public class Main extends Application {
         primaryStage.setTitle("Plant App");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
+        System.out.println(Connector.getInstance().showUsers());
 
     }
 

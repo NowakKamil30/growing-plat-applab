@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyPressed" prefHeight="335.0" prefWidth="280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.AdminAccount">
+    <children>
+        <MenuBar fx:id="myMenuBar4" layoutY="2.0" prefHeight="335.0" prefWidth="280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#ewakuacja" text="Close  Ctrl+F4" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem fx:id="aboutUs" mnemonicParsing="false" onAction="#changeSceneToAboutUs" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <GridPane hgap="5.0" layoutX="3.0" layoutY="44.0" prefHeight="90.0" prefWidth="288.0">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="122.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="189.0" minWidth="10.0" prefWidth="161.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Label text="Imie i Nazwisko" />
+                <Label text="Email" GridPane.rowIndex="1" />
+                <Label text="Uprawnienia" GridPane.rowIndex="2" />
+                <Label fx:id="userAccountName" text="Label" GridPane.columnIndex="1" />
+                <Label fx:id="userAccountEmail" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label fx:id="workName" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            </children>
+        </GridPane>
+        <Button layoutX="73.0" layoutY="155.0" mnemonicParsing="false" text="Moje urządzenia" />
+        <Button layoutX="86.0" layoutY="199.0" mnemonicParsing="false" text="Moje konto" />
+      <Button fx:id="userTableButton" layoutX="90.0" layoutY="234.0" mnemonicParsing="false" onAction="#changeSceneToUserTable" text="User table" />
+        <Button fx:id="logout" layoutX="98.0" layoutY="269.0" mnemonicParsing="false" onAction="#changeSceneToChooseYourAdventure" text="Wyloguj" />
+    </children>
+</AnchorPane>

@@ -9,8 +9,10 @@ public record User(
         String password,
         String firstName,
         String lastName,
+        String gender,
         Role role,
         boolean isActive
 ){
+
 
 }
