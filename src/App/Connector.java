@@ -150,14 +150,6 @@ public class Connector {
                             userMaster.role.set(result.getString("role"));
                             userMaster.isActive.set(result.getBoolean("isActive"));
                             userMaster.gender.set(result.getString("gender"));
-                            userMaster.delete.setOnAction(e->{
-                                try {
-                                    deleteUserByLogin(userMaster.getLogin());
-
-                                } catch (SQLException exception) {
-                                    exception.printStackTrace();
-                                }
-                            });
                             data.add(userMaster);
         }
         return data;

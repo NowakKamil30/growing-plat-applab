@@ -1,12 +1,7 @@
 package App;
 
-import App.models.User;
+
 import javafx.application.Platform;
-import javafx.beans.property.Property;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleListProperty;
-import javafx.beans.value.ObservableStringValue;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -14,22 +9,18 @@ import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class UserTable {
 
@@ -50,8 +41,6 @@ public class UserTable {
     @FXML
     private TableColumn<UserMaster, String> genderColumn;
     @FXML
-    private TableColumn<UserMaster, Button> action;
-    @FXML
     MenuBar myMenuBar4;
     @FXML
     MenuItem aboutUs;
@@ -60,12 +49,17 @@ public class UserTable {
     @FXML
     MenuItem back;
     @FXML
-    Button button;
+    Label infLabel;
 
+    ContextMenu contextMenu = new ContextMenu();
+    MenuItem menuItem = new MenuItem("usuń");
+    MenuItem menuItem2 = new MenuItem("odśwież");
 
     public static ObservableList<UserMaster> userObservableList;
     public static FilteredList<UserMaster> userMasterFilteredList;
     public static SortedList<UserMaster> sortedList;
+
+
     public void initialize()
     {
         initTable();
@@ -80,9 +74,11 @@ public class UserTable {
         roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
         isActiveColumn.setCellValueFactory(new PropertyValueFactory<>("isActive"));
         genderColumn.setCellValueFactory(new PropertyValueFactory<>("gender"));
-        action.setCellValueFactory(new PropertyValueFactory<>("delete"));
+        addButton();
+        contextMenu.getItems().addAll(menuItem, menuItem2);
+        tableView.setContextMenu(contextMenu);
+        addBtn();
     }
-
 
     public ObservableList<UserMaster> loadData()
     {
@@ -113,6 +109,7 @@ public class UserTable {
         sortedList = new SortedList<>(userMasterFilteredList);
         sortedList.comparatorProperty().bind(tableView.comparatorProperty());
         tableView.setItems(sortedList);
+
     }
     catch(SQLException e)
     {
@@ -122,6 +119,72 @@ public class UserTable {
     }
 
 
+    public void addButton()
+    {
+        TableColumn<UserMaster, Void> colBtn = new TableColumn("");
+        Callback<TableColumn<UserMaster, Void>, TableCell<UserMaster, Void>> cellFactory = new Callback<TableColumn<UserMaster, Void>, TableCell<UserMaster, Void>>() {
+            @Override
+            public TableCell<UserMaster, Void> call(final TableColumn<UserMaster, Void> param) {
+                final TableCell<UserMaster, Void> cell = new TableCell<UserMaster, Void>() {
+                    private final Button btn = new Button("usuń");
+                    {
+                        btn.setOnAction((ActionEvent event) -> {
+                            UserMaster userMaster = getTableView().getItems().get(getIndex());
+                            try {
+                                Connector.getInstance().deleteUserByLogin(userMaster.getLogin());
+                                userObservableList.remove(userMaster);
+                            }catch(SQLException e)
+                            {
+                                e.printStackTrace();
+                            }
+
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+        colBtn.setCellFactory(cellFactory);
+        tableView.getColumns().add(colBtn);
+        menuItem2.setOnAction(actionEvent -> {
+            loadData();
+        });
+    }
+
+    public void addBtn()
+    {
+        tableView.setRowFactory(tv ->{
+            TableRow<UserMaster> row = new TableRow<>();
+            row.setOnMouseClicked(mouseEvent -> {
+                if(! row.isEmpty() && mouseEvent.getButton()== MouseButton.SECONDARY)
+                {
+                    UserMaster userMaster = row.getItem();
+                    menuItem.setOnAction(actionEvent -> {
+                        userObservableList.remove(userMaster);
+                        try{
+                            Connector.getInstance().deleteUserByLogin(userMaster.getLogin());
+                            infLabel.setText("usunąłeś użytkownika");
+                        }catch(SQLException e)
+                        {
+                            infLabel.setText("Wystąpił błąd, nie udało się usunąć użytkownika");
+                            e.printStackTrace();
+                        }
+                    });
+                }
+            });
+            return row;
+        });
+    }
     public void refreshTable() {
         tableView.refresh();
     }

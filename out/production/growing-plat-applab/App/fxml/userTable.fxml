@@ -5,7 +5,7 @@
 
 <AnchorPane onKeyPressed="#handleKeyPressed" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.UserTable">
    <children>
-      <TableView fx:id="tableView" layoutX="1.0" layoutY="122.0" prefHeight="278.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="122.0">
+      <TableView fx:id="tableView" layoutX="1.0" layoutY="122.0" prefHeight="246.0" prefWidth="600.0" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="122.0">
         <columns>
           <TableColumn fx:id="firstNameColumn" prefWidth="75.0" text="Imie" />
           <TableColumn fx:id="lastNameColumn" prefWidth="75.0" text="Nazwisko" />
@@ -13,7 +13,6 @@
             <TableColumn fx:id="genderColumn" prefWidth="75.0" text="Płeć" />
             <TableColumn fx:id="isActiveColumn" prefWidth="97.0" text="Czy Aktywny?" />
             <TableColumn fx:id="roleColumn" prefWidth="75.0" text="Rola" />
-            <TableColumn fx:id="action" prefWidth="75.0" />
         </columns>
       </TableView>
       <TextField fx:id="filterField" layoutX="105.0" layoutY="67.0" prefHeight="25.0" prefWidth="277.0" />
@@ -33,7 +32,16 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Button mnemonicParsing="false" text="Button" />
-      <Button fx:id="button" layoutX="461.0" layoutY="67.0" mnemonicParsing="false" onAction="#refreshTable" text="Button" />
+      <GridPane layoutX="14.0" layoutY="372.0" prefHeight="30.0" prefWidth="333.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="infLabel" />
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>
