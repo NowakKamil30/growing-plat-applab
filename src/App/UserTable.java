@@ -74,10 +74,8 @@ public class UserTable {
         roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
         isActiveColumn.setCellValueFactory(new PropertyValueFactory<>("isActive"));
         genderColumn.setCellValueFactory(new PropertyValueFactory<>("gender"));
-        addButton();
         contextMenu.getItems().addAll(menuItem, menuItem2);
         tableView.setContextMenu(contextMenu);
-        addBtn();
     }
 
     public ObservableList<UserMaster> loadData()
@@ -115,6 +113,7 @@ public class UserTable {
     {
         e.printStackTrace();
     }
+        addButton();
         return userObservableList;
     }
 
@@ -159,6 +158,7 @@ public class UserTable {
         menuItem2.setOnAction(actionEvent -> {
             loadData();
         });
+        addBtn();
     }
 
     public void addBtn()
@@ -185,6 +185,7 @@ public class UserTable {
             return row;
         });
     }
+
     public void refreshTable() {
         tableView.refresh();
     }

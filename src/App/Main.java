@@ -23,11 +23,11 @@ public class Main extends Application {
         );
         */
         Parent root;
-        Parent root2;
-        root2 = FXMLLoader.load(getClass().getResource("fxml/splash.fxml"));
+      //  Parent root2;
+      //  root2 = FXMLLoader.load(getClass().getResource("fxml/splash.fxml"));
         root = FXMLLoader.load(getClass().getResource("fxml/chooseYourAdventure.fxml"));
-        primaryStage.setScene(new Scene(root2, 300, 275));
-        primaryStage.show();
+     //   primaryStage.setScene(new Scene(root2, 300, 275));
+     //   primaryStage.show();
 
         primaryStage.setTitle("Plant App");
         primaryStage.setScene(new Scene(root, 300, 275));

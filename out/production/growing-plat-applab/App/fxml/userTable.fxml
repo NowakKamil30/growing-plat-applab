@@ -40,7 +40,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="infLabel" />
+            <Label fx:id="infLabel" prefHeight="17.0" prefWidth="327.0" />
          </children>
       </GridPane>
    </children>
