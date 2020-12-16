@@ -3,10 +3,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane onKeyPressed="#handleKeyPressed" prefHeight="371.0" prefWidth="312.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.Register">
+<AnchorPane onKeyPressed="#handleKeyPressed" prefHeight="413.0" prefWidth="312.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.Register">
    <children>
-      <Button fx:id="register" layoutX="146.0" layoutY="305.0" mnemonicParsing="false" onAction="#registerAccount" text="Zarejestruj" />
-      <Button layoutX="61.0" layoutY="305.0" mnemonicParsing="false" onAction="#changeSceneToChooseYourAdventure" text="Wyjdź" />
+      <Button fx:id="register" layoutX="147.0" layoutY="342.0" mnemonicParsing="false" onAction="#registerAccount" text="Zarejestruj" />
+      <Button layoutX="62.0" layoutY="342.0" mnemonicParsing="false" onAction="#changeSceneToChooseYourAdventure" text="Wyjdź" />
       <Label layoutX="125.0" layoutY="53.0" text="Rejestracja" />
       <GridPane hgap="10.0" layoutX="31.0" layoutY="98.0">
         <columnConstraints>
@@ -17,6 +17,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -34,6 +35,8 @@
             <PasswordField fx:id="registerRepeatPassword" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="registerName" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <TextField fx:id="registerSurname" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label text="Płeć" GridPane.rowIndex="6" />
+            <ComboBox fx:id="comboBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
       </GridPane>
       <MenuBar fx:id="myMenuBar" layoutX="-5.0" layoutY="2.0" prefHeight="25.0" prefWidth="317.0">
@@ -50,6 +53,6 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Label fx:id="registerCommLabel" layoutX="111.0" layoutY="278.0" />
+      <Label fx:id="registerCommLabel" layoutX="111.0" layoutY="316.0" prefHeight="17.0" prefWidth="57.0" />
    </children>
 </AnchorPane>

@@ -1,6 +1,8 @@
 package App;
 
 import App.models.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import javax.xml.transform.Result;
 import java.util.*;
@@ -14,10 +16,11 @@ public class Connector {
 
 
     private Connector() {
-        String url = "jdbc:mysql://localhost:3306/uz?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        ReadSettings readSettings = ReadSettings.getInstance();
+        String url = readSettings.getConnectedString();
         Properties info = new Properties();
-        info.put("user", "dev");
-        info.put("password", "password");
+        info.put("user", readSettings.getUsername());
+        info.put("password", readSettings.getPassword());
 
         try{
             connection = DriverManager.getConnection(url,info);
@@ -45,6 +48,7 @@ public class Connector {
                 "  `password` VARCHAR(45) NOT NULL,\n" +
                 "  `first_name` VARCHAR(45) NOT NULL,\n" +
                 "  `last_name` VARCHAR(45) NOT NULL,\n" +
+                "  `gender` VARCHAR(45) NOT NULL,\n" +
                 "  `role` ENUM(\"USER\", \"ADMIN\") NOT NULL,\n" +
                 "  `isActive` TINYINT NOT NULL DEFAULT 0,\n" +
                 "  PRIMARY KEY (`id`),\n" +
@@ -63,6 +67,7 @@ public class Connector {
                         result.getString("password"),
                         result.getString("first_name"),
                         result.getString("last_name"),
+                        result.getString("gender"),
                         Role.valueOf(result.getString("role")),
                         result.getBoolean("isActive")));
             } else {
@@ -74,13 +79,14 @@ public class Connector {
     }
 
     public void addUser(User user) throws SQLException {
-        statement.execute(String.format("INSERT INTO Users (email, login, password, first_name, last_name, role, isActive) " +
-                "VALUES ('%s', '%s', '%s', '%s', '%s', '%s', %b)",
+        statement.execute(String.format("INSERT INTO Users (email, login, password, first_name, last_name, gender, role, isActive) " +
+                "VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', %b)",
                 user.email(),
                 user.login(),
                 user.password(),
                 user.firstName(),
                 user.lastName(),
+                user.gender(),
                 user.role().toString(),
                 true));
     }
@@ -103,6 +109,7 @@ public class Connector {
                     result.getString("password"),
                     result.getString("first_name"),
                     result.getString("last_name"),
+                    result.getString("gender"),
                     Role.valueOf(result.getString("role")),
                     result.getBoolean("isActive")));
         }
@@ -119,29 +126,34 @@ public class Connector {
                     result.getString("password"),
                     result.getString("first_name"),
                     result.getString("last_name"),
+                    result.getString("gender"),
                     Role.valueOf(result.getString("role")),
                     result.getBoolean("isActive")));
         }
         return Optional.empty();
     }
 
-    public List<User> showUsers() throws SQLException {
+    public ObservableList<UserMaster> showUsers() throws SQLException {
+
+
+        ObservableList<UserMaster> data;
+        data = FXCollections.observableArrayList();
+
         ResultSet result = statement.executeQuery("SELECT * from Users");
-        List<User> userList = new LinkedList<>();
         while (result.next()) {
-            userList.add(
-                    new User(
-                            result.getLong("id"),
-                            result.getString("login"),
-                            result.getString("email"),
-                            result.getString("password"),
-                            result.getString("first_name"),
-                            result.getString("last_name"),
-                            Role.valueOf(result.getString("role")),
-                            result.getBoolean("isActive"))
-            );
+                            UserMaster userMaster = new UserMaster();
+                            userMaster.id.set(result.getLong("id"));
+                            userMaster.login.set(result.getString("login"));
+                            userMaster.email.set(result.getString("email"));
+                            userMaster.password.set(result.getString("password"));
+                            userMaster.firstName.set(result.getString("first_name"));
+                            userMaster.lastName.set(result.getString("last_name"));
+                            userMaster.role.set(result.getString("role"));
+                            userMaster.isActive.set(result.getBoolean("isActive"));
+                            userMaster.gender.set(result.getString("gender"));
+                            data.add(userMaster);
         }
-        return userList;
+        return data;
     }
 
     public List<User> filterByFirstLetter(String letter) throws SQLException {
@@ -156,6 +168,7 @@ public class Connector {
                             result.getString("password"),
                             result.getString("first_name"),
                             result.getString("last_name"),
+                            result.getString("gender"),
                             Role.valueOf(result.getString("role")),
                             result.getBoolean("isActive"))
             );

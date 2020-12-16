@@ -35,7 +35,7 @@
          <children>
             <Label text="Imie i Nazwisko" />
             <Label text="Email" GridPane.rowIndex="1" />
-            <Label text="Something will be here" GridPane.rowIndex="2" />
+            <Label text="Uprawnienia" GridPane.rowIndex="2" />
             <Label fx:id="userAccountName" text="Label" GridPane.columnIndex="1" />
             <Label fx:id="userAccountEmail" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label fx:id="workName" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />

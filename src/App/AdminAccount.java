@@ -7,15 +7,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 
-public class UserAccount {
+public class AdminAccount {
 
-    private String something = "uzytkownika";
 
     @FXML
     MenuBar myMenuBar4;
@@ -29,7 +32,10 @@ public class UserAccount {
     MenuItem aboutUs;
     @FXML
     Button logout;
+    @FXML
+    Button userTableButton;
 
+    public static String something = "administratora";
     public static String login = Login.login;
     public static String firstName = Login.firstName;
     public static String lastName = Login.lastName;
@@ -48,6 +54,14 @@ public class UserAccount {
         Parent root = FXMLLoader.load(getClass().getResource("fxml/aboutUs.fxml"));
         Scene Scene = new Scene(root);
         Stage window = (Stage) myMenuBar4.getScene().getWindow();
+        window.setScene(Scene);
+        window.show();
+
+    }
+    public void changeSceneToUserTable(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/userTable.fxml"));
+        Scene Scene = new Scene(root);
+        Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         window.setScene(Scene);
         window.show();
 

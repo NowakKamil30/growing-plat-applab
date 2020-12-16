@@ -7,7 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.List;
 
 public class Main extends Application {
 
@@ -15,13 +14,16 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        /*
-        Connector.getInstance().addUser(
-                new User(null, "login", "email", "password", "kamil", "nowak", Role.USER, true)
-        );
-        */
+//        Connector.getInstance().addUser(
+//                new User(null, "login", "email", "password", "kamil", "nowak", "5",Role.ADMIN, true)
+//        );
         Parent root;
+      //  Parent root2;
+      //  root2 = FXMLLoader.load(getClass().getResource("fxml/splash.fxml"));
         root = FXMLLoader.load(getClass().getResource("fxml/chooseYourAdventure.fxml"));
+     //   primaryStage.setScene(new Scene(root2, 300, 275));
+     //   primaryStage.show();
+
         primaryStage.setTitle("Plant App");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
@@ -33,4 +35,6 @@ public class Main extends Application {
         launch(args);
     }
 
+private void loadSplashScreen()
+{}
 }

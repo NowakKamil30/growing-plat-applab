@@ -37,6 +37,17 @@ public class Register {
     MenuItem aboutUs;
     @FXML
     Button register;
+    @FXML
+    ComboBox comboBox;
+
+    String gender = "Mężczyzna";
+
+    public void initialize()
+    {
+        comboBox.getItems().removeAll(comboBox.getItems());
+        comboBox.getItems().addAll("Mężczyzna", "Kobieta", "Nieokreślona");
+        comboBox.getSelectionModel().select("Mężczyzna");
+    }
 
     public void ewakuacja(ActionEvent actionEvent) {
         Platform.exit();
@@ -76,11 +87,12 @@ public class Register {
         String email = registerEmail.getText();
         String name = registerName.getText();
         String surname = registerSurname.getText();
+        gender = comboBox.getSelectionModel().getSelectedItem().toString();
         try {
             if (Connector.getInstance().getUserByLogin(login).isEmpty() && !login.isEmpty()) {
                 if (password.equals(repeatPassword) && !password.isEmpty()) {
                     Connector.getInstance().addUser(
-                            new User(null, login, email, password, name, surname, Role.USER, true)
+                            new User(null, login, email, password, name, surname, gender, Role.USER, true)
                     );
 
                     changeSceneToLogin(actionEvent);

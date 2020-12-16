@@ -3,8 +3,6 @@ package App;
 import App.models.User;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -18,6 +16,8 @@ import javafx.scene.control.Button;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Optional;
+
+import static App.Role.ADMIN;
 
 public class Login {
 
@@ -94,11 +94,21 @@ public class Login {
             communicates.setText("niepoprawne dane logowania");
         }
         if(user.isPresent()) {
-            Parent root = FXMLLoader.load(getClass().getResource("fxml/userAccount.fxml"));
-            Scene Scene = new Scene(root);
-            Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            window.setScene(Scene);
-            window.show();
+            if(user.get().role() == ADMIN)
+            {
+                Parent root = FXMLLoader.load(getClass().getResource("fxml/adminAccount.fxml"));
+                Scene Scene = new Scene(root);
+                Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                window.setScene(Scene);
+                window.show();
+            }
+            else {
+                Parent root = FXMLLoader.load(getClass().getResource("fxml/userAccount.fxml"));
+                Scene Scene = new Scene(root);
+                Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                window.setScene(Scene);
+                window.show();
+            }
         }
         else {
             communicates.setText("niepoprawne dane logowania");
@@ -111,7 +121,6 @@ public class Login {
         Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
         window.setScene(Scene);
         window.show();
-
     }
 
 }

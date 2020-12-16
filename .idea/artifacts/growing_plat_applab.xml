@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="growing-plat-applab">
+    <output-path>$PROJECT_DIR$/out/artifacts/growing_plat_applab</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="App.Main" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="title" value="" />
+        <option name="vendor" value="" />
+        <option name="version" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="growing_plat_applab.jar">
+        <element id="module-output" name="growing-plat-applab" />
+      </element>
+    </root>
+  </artifact>
+</component>
