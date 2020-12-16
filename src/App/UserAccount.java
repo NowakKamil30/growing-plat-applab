@@ -30,6 +30,8 @@ public class UserAccount {
     MenuItem aboutUs;
     @FXML
     Button logout;
+    @FXML
+    MenuItem userTable;
 
     public static String login = Login.login;
     public static String firstName = Login.firstName;
@@ -44,6 +46,7 @@ public class UserAccount {
         this.userAccountName.setText(firstName+" "+lastName);
         this.userAccountEmail.setText(email);
         this.workName.setText(something);
+        userTable.setDisable(true);
     }
 
     public void changeSceneToAboutUs(ActionEvent actionEvent) throws IOException {

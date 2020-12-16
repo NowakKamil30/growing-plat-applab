@@ -35,6 +35,8 @@ public class AdminAccount {
     Button logout;
     @FXML
     Button userTableButton;
+    @FXML
+    MenuItem userTable;
 
     public static String something = "administratora";
     public static String login = Login.login;
@@ -70,6 +72,15 @@ public class AdminAccount {
         window.show();
 
     }
+    public void changeSceneToUserTableFromMenu(ActionEvent actionEvent) throws IOException {
+        logger.info("userTableFromMenu");
+        Parent root = FXMLLoader.load(getClass().getResource("fxml/userTable.fxml"));
+        Scene Scene = new Scene(root);
+        Stage window = (Stage) myMenuBar4.getScene().getWindow();
+        window.setScene(Scene);
+        window.show();
+
+    }
     public void changeSceneToChooseYourAdventure(ActionEvent actionEvent) throws IOException {
         logger.info("changeSceneToChooseYourAdventure");
         Parent root = FXMLLoader.load(getClass().getResource("fxml/chooseYourAdventure.fxml"));
@@ -100,6 +111,10 @@ public class AdminAccount {
         if ((keyEvent.isAltDown()||keyEvent.isControlDown()) && keyEvent.getCode() == KeyCode.A) {
             System.out.println("przyjmuje pozycje bojowa");
             aboutUs.fire();
+        }
+        if (keyEvent.isControlDown()&&keyEvent.getCode() == KeyCode.U)
+        {
+            userTable.fire();
         }
     }
 }

@@ -3,9 +3,21 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.Splash">
+<AnchorPane prefHeight="325.0" prefWidth="339.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.Splash">
    <children>
-      <Label layoutX="173.0" layoutY="146.0" prefHeight="92.0" prefWidth="240.0" text="Welcome" />
+      <Label layoutX="118.0" layoutY="53.0" prefHeight="92.0" prefWidth="127.0" text="Welcome" />
+      <GridPane layoutX="59.0" layoutY="145.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="worth" prefHeight="17.0" prefWidth="50.0" GridPane.halignment="RIGHT" />
+            <Label text="\%" GridPane.columnIndex="1" />
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>

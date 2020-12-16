@@ -10,6 +10,7 @@
                 <Menu mnemonicParsing="false" text="File">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#ewakuacja" text="Close  Ctrl+F4" />
+                  <MenuItem fx:id="userTable" mnemonicParsing="false" onAction="#changeSceneToUserTableFromMenu" text="User Table    Ctrl+U" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
@@ -40,7 +41,7 @@
         </GridPane>
         <Button layoutX="73.0" layoutY="155.0" mnemonicParsing="false" text="Moje urządzenia" />
         <Button layoutX="86.0" layoutY="199.0" mnemonicParsing="false" text="Moje konto" />
-      <Button fx:id="userTableButton" layoutX="90.0" layoutY="234.0" mnemonicParsing="false" onAction="#changeSceneToUserTable" text="User table" />
-        <Button fx:id="logout" layoutX="98.0" layoutY="269.0" mnemonicParsing="false" onAction="#changeSceneToChooseYourAdventure" text="Wyloguj" />
+      <Button fx:id="userTableButton" layoutX="85.0" layoutY="234.0" mnemonicParsing="false" onAction="#changeSceneToUserTable" prefHeight="25.0" prefWidth="78.0" text="User table" />
+        <Button fx:id="logout" layoutX="87.0" layoutY="269.0" mnemonicParsing="false" onAction="#changeSceneToChooseYourAdventure" prefHeight="25.0" prefWidth="78.0" text="Wyloguj" />
     </children>
 </AnchorPane>
