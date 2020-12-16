@@ -16,9 +16,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 public class AdminAccount {
-
+    Logger logger = Logger.getLogger("AdminAccount");
 
     @FXML
     MenuBar myMenuBar4;
@@ -45,12 +46,14 @@ public class AdminAccount {
 
     public void initialize()
     {
+        logger.info("initialize");
         this.userAccountName.setText(firstName+" "+lastName);
         this.userAccountEmail.setText(email);
         this.workName.setText(something);
     }
 
     public void changeSceneToAboutUs(ActionEvent actionEvent) throws IOException {
+        logger.info("changeSceneToAboutUs");
         Parent root = FXMLLoader.load(getClass().getResource("fxml/aboutUs.fxml"));
         Scene Scene = new Scene(root);
         Stage window = (Stage) myMenuBar4.getScene().getWindow();
@@ -59,6 +62,7 @@ public class AdminAccount {
 
     }
     public void changeSceneToUserTable(ActionEvent actionEvent) throws IOException {
+        logger.info("changeSceneToUserTable");
         Parent root = FXMLLoader.load(getClass().getResource("fxml/userTable.fxml"));
         Scene Scene = new Scene(root);
         Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
@@ -67,6 +71,7 @@ public class AdminAccount {
 
     }
     public void changeSceneToChooseYourAdventure(ActionEvent actionEvent) throws IOException {
+        logger.info("changeSceneToChooseYourAdventure");
         Parent root = FXMLLoader.load(getClass().getResource("fxml/chooseYourAdventure.fxml"));
         Scene Scene = new Scene(root);
         Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
@@ -75,12 +80,14 @@ public class AdminAccount {
 
     }
     public void ewakuacja(ActionEvent actionEvent) {
+        logger.info("ewakuacja");
         Platform.exit();
     }
 
     @FXML
     private void handleKeyPressed(KeyEvent keyEvent)
     {
+        logger.info("handleKeyPressed");
         if(keyEvent.isControlDown()&&keyEvent.getCode() == KeyCode.L)
         {
             logout.fire();

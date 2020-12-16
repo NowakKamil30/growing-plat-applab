@@ -7,13 +7,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.logging.Logger;
+
 
 public class Main extends Application {
+    static Logger logger = Logger.getLogger("Main");
 
     private User user;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        logger.info("start");
 //        Connector.getInstance().addUser(
 //                new User(null, "login", "email", "password", "kamil", "nowak", "5",Role.ADMIN, true)
 //        );
@@ -32,6 +36,7 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+        logger.info("main");
         launch(args);
     }
 

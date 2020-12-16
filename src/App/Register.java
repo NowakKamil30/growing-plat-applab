@@ -15,8 +15,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 public class Register {
+    Logger logger = Logger.getLogger("Register");
     @FXML
     MenuBar myMenuBar;
     @FXML
@@ -44,16 +46,19 @@ public class Register {
 
     public void initialize()
     {
+        logger.info("initialize");
         comboBox.getItems().removeAll(comboBox.getItems());
         comboBox.getItems().addAll("Mężczyzna", "Kobieta", "Nieokreślona");
         comboBox.getSelectionModel().select("Mężczyzna");
     }
 
     public void ewakuacja(ActionEvent actionEvent) {
+        logger.info("ewakuacja");
         Platform.exit();
     }
 
     public void changeSceneToChooseYourAdventure(ActionEvent actionEvent) throws IOException {
+        logger.info("changeSceneToChooseYourAdventure");
         Parent root = FXMLLoader.load(getClass().getResource("fxml/chooseYourAdventure.fxml"));
         Scene Scene = new Scene(root);
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -63,6 +68,7 @@ public class Register {
     }
 
     public void changeSceneToAboutUs(ActionEvent actionEvent) throws IOException {
+        logger.info("changeSceneToAboutUs");
         Parent root = FXMLLoader.load(getClass().getResource("fxml/aboutUs.fxml"));
         Scene Scene = new Scene(root);
         Stage window = (Stage) myMenuBar.getScene().getWindow();
@@ -71,6 +77,7 @@ public class Register {
     }
 
     public void changeSceneToLogin(ActionEvent actionEvent) throws IOException {
+        logger.info("changeSceneToLogin");
         Parent root = FXMLLoader.load(getClass().getResource("fxml/login.fxml"));
         Scene Scene = new Scene(root);
         Stage window = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -80,7 +87,7 @@ public class Register {
     }
 
     public void registerAccount(ActionEvent actionEvent) throws IOException {
-
+        logger.info("registerAccount");
         String password = registerPassword.getText();
         String repeatPassword = registerRepeatPassword.getText();
         String login = registerLogin.getText();
@@ -111,6 +118,7 @@ public class Register {
     @FXML
     private void handleKeyPressed(KeyEvent keyEvent)
     {
+        logger.info("handleKeyPressed");
         if(keyEvent.getCode() == KeyCode.ENTER)
         {
             register.fire();

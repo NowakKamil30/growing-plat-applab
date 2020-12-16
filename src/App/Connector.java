@@ -7,8 +7,10 @@ import javafx.collections.ObservableList;
 import javax.xml.transform.Result;
 import java.util.*;
 import java.sql.*;
+import java.util.logging.Logger;
 
 public class Connector {
+    static Logger logger = Logger.getLogger("Connector");
 
     private static Connector connector;
     private Connection connection;
@@ -16,6 +18,7 @@ public class Connector {
 
 
     private Connector() {
+        logger.info("Connector");
         ReadSettings readSettings = ReadSettings.getInstance();
         String url = readSettings.getConnectedString();
         Properties info = new Properties();
@@ -27,7 +30,7 @@ public class Connector {
             statement = connection.createStatement();
             createTableUser();
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+            logger.warning("Connector "+ throwables.getMessage());
         }
 
     }
@@ -36,11 +39,13 @@ public class Connector {
     }
 
     public static Connector getInstance(){
+        logger.info("getInstance");
         if(connector == null) connector = new Connector();
         return connector;
     }
 
     private void createTableUser() throws SQLException {
+        logger.info("createTableUser");
         statement.execute("CREATE TABLE IF NOT EXISTS `uz`.`Users` (\n" +
                 "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
                 "  `email` VARCHAR(45) NOT NULL,\n" +
@@ -57,6 +62,7 @@ public class Connector {
     }
 
     public Optional<User> login(String login, String password) throws SQLException {
+        logger.info("login");
         ResultSet result = statement.executeQuery("SELECT * FROM Users WHERE login = " + "'" + login + "'" + " AND password = " + "'"+password+"'");
         if(result.next()) {
             if (result.getBoolean("isActive")) {
@@ -79,6 +85,7 @@ public class Connector {
     }
 
     public void addUser(User user) throws SQLException {
+        logger.info("addUser");
         statement.execute(String.format("INSERT INTO Users (email, login, password, first_name, last_name, gender, role, isActive) " +
                 "VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', %b)",
                 user.email(),
@@ -92,14 +99,17 @@ public class Connector {
     }
 
     public void deleteUserById(Long id) throws SQLException {
+        logger.info("deleteUserById");
         statement.execute("DELETE FROM Users WHERE id=" + id);
     }
 
     public void deleteUserByLogin(String login) throws SQLException {
+        logger.info("deleteUserByLogin");
         statement.execute("DELETE FROM Users WHERE login=" + "'" + login + "'");
     }
 
     public Optional<User> getUserById(Long id) throws SQLException {
+        logger.info("getUserById");
         ResultSet result = statement.executeQuery("SELECT * from Users WHERE id=" + id);
         if (result.next()) {
             return Optional.of(new User(
@@ -117,6 +127,7 @@ public class Connector {
     }
 
     public Optional<User> getUserByLogin(String login) throws SQLException {
+        logger.info("getUserByLogin");
         ResultSet result = statement.executeQuery("SELECT * from `Users` WHERE `login`=" + "'" + login + "'");
         if (result.next()) {
             return Optional.of(new User(
@@ -134,7 +145,7 @@ public class Connector {
     }
 
     public ObservableList<UserMaster> showUsers() throws SQLException {
-
+        logger.info("showUsers");
 
         ObservableList<UserMaster> data;
         data = FXCollections.observableArrayList();
@@ -157,6 +168,7 @@ public class Connector {
     }
 
     public List<User> filterByFirstLetter(String letter) throws SQLException {
+        logger.info("filterByFirstLetter");
         ResultSet result = statement.executeQuery("SELECT * from Users WHERE first_name LIKE '" + letter + "%'");
         List<User> userList = new LinkedList<>();
         while (result.next()) {
@@ -177,6 +189,7 @@ public class Connector {
     }
 
     public void updateUser(Long id, User user) throws SQLException {
+        logger.info("updateUser");
         statement.execute("UPDATE Users SET" +
                 " email = " + user.email() +
                 " , login = " + user.login() +
@@ -189,6 +202,7 @@ public class Connector {
     }
 
     public void disconnect() throws SQLException {
+        logger.info("disconnect");
         statement.close();
     }
 

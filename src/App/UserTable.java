@@ -21,8 +21,10 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 public class UserTable {
+    Logger logger = Logger.getLogger("UserTable");
 
     @FXML
     private TableView<UserMaster> tableView;
@@ -62,12 +64,14 @@ public class UserTable {
 
     public void initialize()
     {
+        logger.info("initialize");
         initTable();
         loadData();
     }
 
     public void initTable()
     {
+        logger.info("initTable");
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         loginColumn.setCellValueFactory(new PropertyValueFactory<>("login"));
@@ -80,6 +84,7 @@ public class UserTable {
 
     public ObservableList<UserMaster> loadData()
     {
+        logger.info("loadData");
     try {
         userObservableList = FXCollections.observableList(Connector.getInstance().showUsers());
         userMasterFilteredList = new FilteredList<>(userObservableList, b-> true);
@@ -111,7 +116,7 @@ public class UserTable {
     }
     catch(SQLException e)
     {
-        e.printStackTrace();
+        logger.warning("loadData" + e.getMessage());
     }
         addButton();
         return userObservableList;
@@ -120,6 +125,7 @@ public class UserTable {
 
     public void addButton()
     {
+        logger.info("addButton");
         TableColumn<UserMaster, Void> colBtn = new TableColumn("");
         Callback<TableColumn<UserMaster, Void>, TableCell<UserMaster, Void>> cellFactory = new Callback<TableColumn<UserMaster, Void>, TableCell<UserMaster, Void>>() {
             @Override
@@ -142,6 +148,7 @@ public class UserTable {
 
                     @Override
                     public void updateItem(Void item, boolean empty) {
+                        logger.info("updateItem");
                         super.updateItem(item, empty);
                         if (empty) {
                             setGraphic(null);
@@ -163,6 +170,7 @@ public class UserTable {
 
     public void addBtn()
     {
+        logger.info("addBtn");
         tableView.setRowFactory(tv ->{
             TableRow<UserMaster> row = new TableRow<>();
             row.setOnMouseClicked(mouseEvent -> {
@@ -187,10 +195,13 @@ public class UserTable {
     }
 
     public void refreshTable() {
+
+        logger.info("refreshTable");
         tableView.refresh();
     }
 
     public void changeSceneToAboutUs(ActionEvent actionEvent) throws IOException {
+        logger.info("changeSceneToAboutUs");
         Parent root = FXMLLoader.load(getClass().getResource("fxml/aboutUs.fxml"));
         Scene Scene = new Scene(root);
         Stage window = (Stage) myMenuBar4.getScene().getWindow();
@@ -199,6 +210,7 @@ public class UserTable {
 
     }
     public void changeSceneToChooseYourAdventure(ActionEvent actionEvent) throws IOException {
+        logger.info("changeSceneToChooseYourAdventure");
         Parent root = FXMLLoader.load(getClass().getResource("fxml/chooseYourAdventure.fxml"));
         Scene Scene = new Scene(root);
         Stage window = (Stage) myMenuBar4.getScene().getWindow();
@@ -207,6 +219,7 @@ public class UserTable {
 
     }
     public void changeSceneToAdminAccount(ActionEvent actionEvent) throws IOException {
+        logger.info("changeSceneToAdminAccount");
         Parent root = FXMLLoader.load(getClass().getResource("fxml/adminAccount.fxml"));
         Scene Scene = new Scene(root);
         Stage window = (Stage) myMenuBar4.getScene().getWindow();
@@ -217,6 +230,7 @@ public class UserTable {
     @FXML
     private void handleKeyPressed(KeyEvent keyEvent)
     {
+        logger.info("handleKeyPressed");
         if(keyEvent.isControlDown()&&keyEvent.getCode() == KeyCode.L)
         {
             logout.fire();

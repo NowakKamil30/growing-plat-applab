@@ -16,11 +16,12 @@ import javafx.scene.control.Button;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Optional;
+import java.util.logging.Logger;
 
 import static App.Role.ADMIN;
 
 public class Login {
-
+    Logger logger = Logger.getLogger("Login");
     @FXML
     MenuBar myMenuBar2;
     @FXML
@@ -39,6 +40,7 @@ public class Login {
     public static String login, password, firstName, lastName, email;
 
     public void start(Stage stage) throws Exception {
+        logger.info("start");
         Parent root = FXMLLoader.load(getClass().getResource("src/App/fxml/login.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -50,6 +52,7 @@ public class Login {
     @FXML
     private void handleKeyPressed(KeyEvent keyEvent)
     {
+        logger.info("handleKeyPressed");
         if(keyEvent.getCode() == KeyCode.ENTER)
         {
            _btn1.fire();
@@ -67,10 +70,12 @@ public class Login {
 
 
     public void ewakuacja(ActionEvent actionEvent) {
+        logger.info("handleKeyPressed");
         Platform.exit();
     }
 
     public void changeSceneToAboutUs(ActionEvent actionEvent) throws IOException {
+        logger.info("handleKeyPressed");
         Parent root = FXMLLoader.load(getClass().getResource("fxml/aboutUs.fxml"));
         Scene Scene = new Scene(root);
         Stage window = (Stage) myMenuBar2.getScene().getWindow();
@@ -79,6 +84,7 @@ public class Login {
     }
 
     public void login (ActionEvent actionEvent) throws IOException {
+        logger.info("handleKeyPressed");
         login = usernameLogin.getText();
         password = passwordLogin.getText();
         System.out.println(login + " " + password);
@@ -90,7 +96,7 @@ public class Login {
                 email = user.get().email();
                 user = Connector.getInstance().login(login, password);
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            logger.warning("handleKeyPressed" + e.getMessage());
             communicates.setText("niepoprawne dane logowania");
         }
         if(user.isPresent()) {
@@ -116,6 +122,7 @@ public class Login {
     }
 
     public void changeSceneToChooseYourAdventure(ActionEvent actionEvent) throws IOException {
+        logger.info("changeSceneToChooseYourAdventure");
         Parent root = FXMLLoader.load(getClass().getResource("fxml/chooseYourAdventure.fxml"));
         Scene Scene = new Scene(root);
         Stage window = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
