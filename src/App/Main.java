@@ -34,7 +34,8 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         logger.info("main");
-        launch(args);
+        System.setProperty("javafx.preloader", JavaFxApplication6_Preloader.class.getName());
+        Application.launch(Main.class, args);
     }
 
 }
