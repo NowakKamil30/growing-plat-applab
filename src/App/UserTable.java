@@ -67,6 +67,8 @@ public class UserTable {
         logger.info("initialize");
         initTable();
         loadData();
+        addButton();
+        addBtn();
     }
 
     public void initTable()
@@ -118,7 +120,6 @@ public class UserTable {
     {
         logger.warning("loadData" + e.getMessage());
     }
-        addButton();
         return userObservableList;
     }
 
@@ -165,7 +166,6 @@ public class UserTable {
         menuItem2.setOnAction(actionEvent -> {
             loadData();
         });
-        addBtn();
     }
 
     public void addBtn()
