@@ -1,8 +1,6 @@
 package App;
 
 import static java.lang.Thread.sleep;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Preloader;
 import javafx.scene.Scene;
 import javafx.scene.control.ProgressBar;
@@ -12,17 +10,12 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-/**
- * Simple Preloader Using the ProgressBar Control
- *
- * @author Łukasz
- */
-public class JavaFxApplication6_Preloader extends Preloader {
+public class Splash extends Preloader {
 
     ProgressBar bar;
     Stage stage;
 
-    private Scene createPreloaderScene() {
+    private Scene createSplash() {
         StackPane root = new StackPane();
         ImageView img = new ImageView("splash.jpg");
         root.getChildren().add(img);
@@ -36,7 +29,7 @@ public class JavaFxApplication6_Preloader extends Preloader {
     public void start(Stage stage) throws Exception {
         this.stage = stage;
         stage.initStyle(StageStyle.TRANSPARENT);
-        stage.setScene(createPreloaderScene());
+        stage.setScene(createSplash());
         stage.show();
 
     }

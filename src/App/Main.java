@@ -7,7 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import com.sun.javafx.application.LauncherImpl;
-
 import java.util.logging.Logger;
 
 
@@ -27,14 +26,12 @@ public class Main extends Application {
         root = FXMLLoader.load(getClass().getResource("fxml/chooseYourAdventure.fxml"));
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
-
-
     }
 
 
     public static void main(String[] args) {
         logger.info("main");
-        System.setProperty("javafx.preloader", JavaFxApplication6_Preloader.class.getName());
+        System.setProperty("javafx.preloader", Splash.class.getName());
         Application.launch(Main.class, args);
     }
 
