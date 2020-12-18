@@ -53,6 +53,6 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Label fx:id="registerCommLabel" layoutX="111.0" layoutY="316.0" prefHeight="17.0" prefWidth="57.0" />
+      <Label fx:id="registerCommLabel" layoutX="111.0" layoutY="316.0" prefHeight="17.0" />
    </children>
 </AnchorPane>

@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import com.sun.javafx.application.LauncherImpl;
 import java.util.logging.Logger;
 
 
