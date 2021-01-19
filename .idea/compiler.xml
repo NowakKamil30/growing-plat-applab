@@ -11,10 +11,21 @@
       <entry name="!?*.kt" />
       <entry name="!?*.clj" />
     </wildcardResourcePatterns>
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="growing-plat-applab" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="growing-plat-applab" target="15" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="growing-plat-applab" options="--add-exports javafx.graphics/com.sun.javafx.application=growing.plat.applab" />
+      <module name="growing-plat-applab" options="" />
     </option>
   </component>
 </project>
