@@ -1,0 +1,217 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 268435456 bytes for G1 virtual space
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Zero Based Compressed Oops mode in which the Java heap is
+#     placed in the first 32GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 32GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (./open/src/hotspot/os/windows/os_windows.cpp:3472), pid=13132, tid=8580
+#
+# JRE version:  (15.0.1+9) (build )
+# Java VM: OpenJDK 64-Bit Server VM (15.0.1+9-18, mixed mode, sharing, tiered, compressed oops, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: --enable-preview -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.3\lib\idea_rt.jar=62511:C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.3\bin -Dfile.encoding=UTF-8 App.NewMain
+
+Host: AMD Ryzen 5 3600XT 6-Core Processor            , 12 cores, 15G,  Windows 10 , 64 bit Build 19041 (10.0.19041.662)
+Time: Tue Jan 26 22:06:55 2021 Œrodkowoeuropejski czas stand. elapsed time: 0.009899 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000021c5c197980):  JavaThread "Unknown thread" [_thread_in_vm, id=8580, stack(0x000000d381a00000,0x000000d381b00000)]
+
+Stack: [0x000000d381a00000,0x000000d381b00000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x62ae9a]
+V  [jvm.dll+0x781389]
+V  [jvm.dll+0x782ae3]
+V  [jvm.dll+0x783143]
+V  [jvm.dll+0x216265]
+V  [jvm.dll+0x6281d9]
+V  [jvm.dll+0x61cd15]
+V  [jvm.dll+0x2d01fd]
+V  [jvm.dll+0x2d0062]
+V  [jvm.dll+0x2d603c]
+V  [jvm.dll+0x325b2a]
+V  [jvm.dll+0x3251f4]
+V  [jvm.dll+0x2a717a]
+V  [jvm.dll+0x2a8318]
+V  [jvm.dll+0x75e101]
+V  [jvm.dll+0x3343e4]
+V  [jvm.dll+0x73e826]
+V  [jvm.dll+0x3b7777]
+V  [jvm.dll+0x3b9201]
+C  [jli.dll+0x52fb]
+C  [ucrtbase.dll+0x214c2]
+C  [KERNEL32.DLL+0x17034]
+C  [ntdll.dll+0x4d0d1]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007ffc912d4ff0, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x0000021c5c1ea390 GCTaskThread "GC Thread#0" [stack: 0x000000d381b00000,0x000000d381c00000] [id=2504]
+  0x0000021c5c1fb420 ConcurrentGCThread "G1 Main Marker" [stack: 0x000000d381c00000,0x000000d381d00000] [id=11096]
+  0x0000021c5c1fc7b0 ConcurrentGCThread "G1 Conc#0" [stack: 0x000000d381d00000,0x000000d381e00000] [id=8532]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffc90ac8047]
+
+VM state: not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x0000021c5c193e40] Heap_lock - owner thread: 0x0000021c5c197980
+
+Heap address: 0x0000000700c00000, size: 4084 MB, Compressed Oops mode: Zero based, Oop shift amount: 3
+CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 0.
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0, Narrow klass range: 0x0
+
+Heap:
+ garbage-first heap   total 262144K, used 0K [0x0000000700c00000, 0x0000000800000000)
+  region size 2048K, 0 young (0K), 0 survivors (0K)
+ Metaspace       used 0K, capacity 0K, committed 0K, reserved 0K
+  class space    used 0K, capacity 0K, committed 0K, reserved 0K
+
+Heap Regions: E=young(eden), S=young(survivor), O=old, HS=humongous(starts), HC=humongous(continues), CS=collection set, F=free, OA=open archive, CA=closed archive, TAMS=top-at-mark-start (previous, next)
+
+Card table byte_map: [0x0000021c74120000,0x0000021c74920000] _byte_map_base: 0x0000021c7091a000
+
+Marking Bits (Prev, Next): (CMBitMap*) 0x0000021c5c1eab80, (CMBitMap*) 0x0000021c5c1eabc0
+ Prev Bits: [0x0000021c75120000, 0x0000021c790f0000)
+ Next Bits: [0x0000021c790f0000, 0x0000021c7d0c0000)
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (1 events):
+Event: 0.006 Loaded shared library C:\Users\bgabr\.jdks\openjdk-15.0.1\bin\java.dll
+
+
+Dynamic libraries:
+0x00007ff6c8be0000 - 0x00007ff6c8bed000 	C:\Users\bgabr\.jdks\openjdk-15.0.1\bin\java.exe
+0x00007ffcc7bd0000 - 0x00007ffcc7dc6000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007ffcc7ad0000 - 0x00007ffcc7b8d000 	C:\Windows\System32\KERNEL32.DLL
+0x00007ffcc5450000 - 0x00007ffcc5719000 	C:\Windows\System32\KERNELBASE.dll
+0x00007ffcc5750000 - 0x00007ffcc5850000 	C:\Windows\System32\ucrtbase.dll
+0x00007ffcc08f0000 - 0x00007ffcc0908000 	C:\Users\bgabr\.jdks\openjdk-15.0.1\bin\jli.dll
+0x00007ffcbf6c0000 - 0x00007ffcbf6d9000 	C:\Users\bgabr\.jdks\openjdk-15.0.1\bin\VCRUNTIME140.dll
+0x00007ffcc5c30000 - 0x00007ffcc5dd0000 	C:\Windows\System32\USER32.dll
+0x00007ffcb1b90000 - 0x00007ffcb1e2b000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.746_none_ca02b4b61b8320a4\COMCTL32.dll
+0x00007ffcc5420000 - 0x00007ffcc5442000 	C:\Windows\System32\win32u.dll
+0x00007ffcc7790000 - 0x00007ffcc77ba000 	C:\Windows\System32\GDI32.dll
+0x00007ffcc74e0000 - 0x00007ffcc757e000 	C:\Windows\System32\msvcrt.dll
+0x00007ffcc5310000 - 0x00007ffcc541b000 	C:\Windows\System32\gdi32full.dll
+0x00007ffcc5b90000 - 0x00007ffcc5c2d000 	C:\Windows\System32\msvcp_win.dll
+0x00007ffcc6ae0000 - 0x00007ffcc6b10000 	C:\Windows\System32\IMM32.DLL
+0x00007ffcbf6b0000 - 0x00007ffcbf6bc000 	C:\Users\bgabr\.jdks\openjdk-15.0.1\bin\vcruntime140_1.dll
+0x00007ffca3ee0000 - 0x00007ffca3f71000 	C:\Users\bgabr\.jdks\openjdk-15.0.1\bin\msvcp140.dll
+0x00007ffc90810000 - 0x00007ffc9136e000 	C:\Users\bgabr\.jdks\openjdk-15.0.1\bin\server\jvm.dll
+0x00007ffcc70d0000 - 0x00007ffcc717c000 	C:\Windows\System32\ADVAPI32.dll
+0x00007ffcc6b30000 - 0x00007ffcc6bcc000 	C:\Windows\System32\sechost.dll
+0x00007ffcc79a0000 - 0x00007ffcc7acb000 	C:\Windows\System32\RPCRT4.dll
+0x00007ffcc5dd0000 - 0x00007ffcc5dd8000 	C:\Windows\System32\PSAPI.DLL
+0x00007ffcc2b90000 - 0x00007ffcc2b99000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007ffcc7060000 - 0x00007ffcc70cb000 	C:\Windows\System32\WS2_32.dll
+0x00007ffcbefb0000 - 0x00007ffcbefba000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007ffcb8d00000 - 0x00007ffcb8d27000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007ffcc3290000 - 0x00007ffcc32a2000 	C:\Windows\SYSTEM32\kernel.appcore.dll
+0x00007ffcbf6a0000 - 0x00007ffcbf6aa000 	C:\Users\bgabr\.jdks\openjdk-15.0.1\bin\jimage.dll
+0x00007ffcaff40000 - 0x00007ffcb0124000 	C:\Windows\SYSTEM32\DBGHELP.DLL
+0x00007ffcafbc0000 - 0x00007ffcafbec000 	C:\Windows\SYSTEM32\dbgcore.DLL
+0x00007ffcc5a60000 - 0x00007ffcc5ae0000 	C:\Windows\System32\bcryptPrimitives.dll
+0x00007ffcbf690000 - 0x00007ffcbf69e000 	C:\Users\bgabr\.jdks\openjdk-15.0.1\bin\instrument.dll
+0x00007ffcaefc0000 - 0x00007ffcaefe5000 	C:\Users\bgabr\.jdks\openjdk-15.0.1\bin\java.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Users\bgabr\.jdks\openjdk-15.0.1\bin;C:\Windows\SYSTEM32;C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.746_none_ca02b4b61b8320a4;C:\Users\bgabr\.jdks\openjdk-15.0.1\bin\server
+
+VM Arguments:
+jvm_args: --enable-preview -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.3\lib\idea_rt.jar=62511:C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.3\bin -Dfile.encoding=UTF-8 
+java_command: App.NewMain
+java_class_path (initial): C:\Users\bgabr\IdeaProjects\growing-plat-applab\target\classes;C:\Users\bgabr\IdeaProjects\growing-plat-applab\mysql-connector-java-8.0.18\mysql-connector-java-8.0.18.jar;C:\Users\bgabr\.m2\repository\org\openjfx\javafx-controls\13\javafx-controls-13.jar;C:\Users\bgabr\.m2\repository\org\openjfx\javafx-controls\13\javafx-controls-13-win.jar;C:\Users\bgabr\.m2\repository\org\openjfx\javafx-graphics\13\javafx-graphics-13.jar;C:\Users\bgabr\.m2\repository\org\openjfx\javafx-graphics\13\javafx-graphics-13-win.jar;C:\Users\bgabr\.m2\repository\org\openjfx\javafx-base\13\javafx-base-13.jar;C:\Users\bgabr\.m2\repository\org\openjfx\javafx-base\13\javafx-base-13-win.jar;C:\Users\bgabr\.m2\repository\com\amazonaws\aws-java-sdk\1.2.12\aws-java-sdk-1.2.12.jar;C:\Users\bgabr\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\bgabr\.m2\repository\org\apache\httpcomponents\httpclient\4.5.13\httpclient-4.5.13.jar;C:\Users\bgabr\.m2\repository\org\apache\httpcomponents\httpcore\4.4.13\httpcore-4.4.13.jar;C:\Users\bgabr\.m2\repository\commons-codec\commons-codec\1.3\commons-codec-1.3.jar;C:\Users\bgabr\.m2\repository\org\codehaus\jackson\jackson-core-asl\1.9.11\jackson-core-asl-1.9.11.jar;C:\Users\bgabr\.m2\repository\javax\mail\mail\1.5.0-b01\mail-1.5.0-b01.jar;C:\Users\bgabr\.m2\repository\javax\activation\activation\1.1\activation-1.1.jar;C:\Users\bgabr\.m2\repository\stax\stax-api\1.0.1\stax-api-1.0.1.jar;C:\Users\bgabr\.m2\repository\com\itextpdf\itextpdf\5.5.13\itextpdf-5.5.13.jar;C:\Users\bgabr\.m2\repository\com\itextpdf\barcodes\7.1.14\barcodes-7.1.14.jar;C:\Users\bgabr\.m2\repository\org\slf4j\slf4j-api\1.7.30\slf4j-api-1.7.30.jar;C:\Users\bgabr\.m2\repository\com\itextpdf\font-asian\7.1.14\font-asian-7.1.14.jar;C:\Users\bgabr\.m2\repository\com\itextpdf\forms\7.1.14\forms-7.1.14.jar;C:\Users\bgabr\.m2\repository\com\itextpdf\hyph\7.1.14\hyph-7.1.14.jar;C:\Users\bgabr\.m2\repository\com\itextpdf\io\7.1.14\io-7.1
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 3                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 10                                        {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 2097152                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 268435456                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 4282384384                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 2097152                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5839372                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122909434                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122909434                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 4282384384                             {manageable} {ergonomic}
+     bool UseCompressedClassPointers               = true                                 {lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                                 {lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+PATH=C:\Python39\Scripts\;C:\Python39\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;;C:\Aldec\Active-HDL-Student-Edition\bin;C:\Users\bgabr\AppData\Local\Microsoft\WindowsApps;C:\Users\bgabr\AppData\Roaming\npm
+USERNAME=bgabr
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=AMD64 Family 23 Model 113 Stepping 0, AuthenticAMD
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 10 , 64 bit Build 19041 (10.0.19041.662)
+OS uptime: 1 days 13:28 hours
+
+CPU: total 12 (initial active 12) (12 cores per cpu, 2 threads per core) family 23 model 113 stepping 0 microcode 0x0, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, vzeroupper, avx, avx2, aes, clmul, 3dnowpref, lzcnt, sse4a, ht, tsc, tscinvbit, tscinv, bmi1, bmi2, adx, sha, fma, clflush, clflushopt
+
+Memory: 4k page, system-wide physical 16330M (4220M free)
+TotalPageFile size 17866M (AvailPageFile size 69M)
+current process WorkingSet (physical memory assigned to process): 10M, peak: 10M
+current process commit charge ("private bytes"): 64M, peak: 320M
+
+vm_info: OpenJDK 64-Bit Server VM (15.0.1+9-18) for windows-amd64 JRE (15.0.1+9-18), built on Sep 15 2020 14:39:31 by "mach5one" with unknown MS VC++:1925
+
+END.

@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import org.apache.log4j.Logger;
 
+import java.awt.print.PrinterException;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -60,7 +61,7 @@ public class UserTable {
     public static ObservableList<UserMaster> userObservableList;
     public static FilteredList<UserMaster> userMasterFilteredList;
     public static SortedList<UserMaster> sortedList;
-
+    public GeneratePDF generatePDF = new GeneratePDF();
 
     public void initialize()
     {
@@ -69,7 +70,16 @@ public class UserTable {
         loadData();
         addButton();
         addBtn();
-        GeneratePDF.generate();
+        try {
+
+           // generatePDF.generate();
+            // generatePDF.sendToPrint();
+            generatePDF.sendToPrint2();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (PrinterException e) {
+            e.printStackTrace();
+        }
     }
 
     public void initTable()
